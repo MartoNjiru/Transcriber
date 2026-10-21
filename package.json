@@ -1,0 +1,9 @@
+{
+  "name": "transcriber-meeting-companion",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Consent-based meeting transcription and note suggestions",
+  "engines": {
+    "node": ">=20"
+  }
+}

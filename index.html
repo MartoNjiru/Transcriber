@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10131b">
+    <meta
+      name="description"
+      content="A visible, consent-based meeting companion for transcription and notes."
+    >
+    <title>Meeting Companion | Transcriber</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Transcriber home">
+          <span class="brand-mark" aria-hidden="true">T</span>
+          <span>transcriber</span>
+        </a>
+        <span class="privacy-label"><span class="status-dot"></span> Visible meeting mode</span>
+      </header>
+
+      <section class="intro">
+        <p class="eyebrow">MEETING COMPANION</p>
+        <h1>Stay present.<br><span>Keep the important bits.</span></h1>
+        <p class="intro-copy">
+          Live transcription, thoughtful response suggestions, and clear meeting notes.
+          You stay in control of the mic and every AI request.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="Meeting companion workspace">
+        <div class="session-bar">
+          <div class="session-info">
+            <span class="live-indicator" id="liveIndicator"></span>
+            <div>
+              <strong id="sessionTitle">Your meeting</strong>
+              <span class="session-status" id="status" role="status" aria-live="polite">Ready when you are</span>
+            </div>
+          </div>
+          <div class="session-actions">
+            <label class="access-code">
+              <span class="sr-only">App access code</span>
+              <input id="accessCode" type="password" autocomplete="current-password" placeholder="App access code">
+            </label>
+            <button class="button button-primary" id="startButton" type="button">
+              <span aria-hidden="true">●</span> Start listening
+            </button>
+            <button class="button button-stop" id="stopButton" type="button" disabled>Stop</button>
+          </div>
+        </div>
+
+        <div class="consent-row">
+          <input id="consent" type="checkbox">
+          <label for="consent">
+            I’ve informed everyone whose conversation may be captured and have their permission.
+          </label>
+        </div>
+        <p class="mic-notice">
+          The browser may process microphone audio using its speech-recognition service.
+          Audio isn’t saved by this app. Transcripts are sent to the AI provider only when you request a suggestion or summary.
+        </p>
+
+        <div class="panels">
+          <section class="panel transcript-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="panel-kicker">CAPTURE</p>
+                <h2>Live transcript</h2>
+              </div>
+              <span class="mic-badge" id="micBadge">MIC OFF</span>
+            </div>
+            <textarea id="transcript" aria-label="Meeting transcript" placeholder="Your transcript will appear here. You can also type or paste notes." spellcheck="true"></textarea>
+            <div class="panel-footer">
+              <span id="wordCount">0 words</span>
+              <div class="footer-actions">
+                <button class="text-button" id="clearButton" type="button">Clear</button>
+                <button class="text-button" id="saveButton" type="button">Download transcript</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel assistant-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="panel-kicker">YOUR COPILOT</p>
+                <h2>Helpful, not noisy.</h2>
+              </div>
+              <span class="sparkle" aria-hidden="true">✳</span>
+            </div>
+            <p class="assistant-hint">
+              Ask for a concise response or turn the conversation into useful notes. Nothing is sent until you choose an action.
+            </p>
+            <div class="ai-actions">
+              <button class="button button-secondary" id="suggestButton" type="button" disabled>
+                <span aria-hidden="true">↗</span> Suggest a response
+              </button>
+              <button class="button button-secondary" id="summaryButton" type="button" disabled>
+                <span aria-hidden="true">☷</span> Summarize meeting
+              </button>
+            </div>
+            <div class="output-card" id="output" aria-live="polite">
+              <span class="output-placeholder">Your suggestion or meeting notes will show up here.</span>
+            </div>
+            <p class="small-note">AI can make mistakes. Review suggestions before using them.</p>
+          </section>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>Private by design. You decide when to listen and when to ask.</span>
+        <span id="speechSupport">Checking microphone support…</span>
+      </footer>
+    </main>
+  </body>
+</html>
